@@ -1,1 +1,1 @@
-mkdir -p ~/.ssh && curl "https://github.com/tibtiq.keys" >~/.ssh/authorized_keys
+mkdir -p ~/.ssh && curl "https://github.com/tibtiq.keys" > ~/.ssh/authorized_keys
