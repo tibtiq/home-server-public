@@ -29,10 +29,10 @@
         };
       }) // {
         nixosConfigurations = {
-          laptop = nixpkgs.lib.nixosSystem {
+          proxmox_lxc_fresh = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./hosts/laptop.nix
+              ./hosts/proxmox_lxc_fresh.nix
             ];
           };
 
@@ -45,11 +45,11 @@
         };
 
         homeConfigurations = {
-          "tibtiq@laptop" = home-manager.lib.homeManagerConfiguration {
+          "tibtiq@proxmox_lxc_fresh" = home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { system = "x86_64-linux"; };
             modules = [
               ./home/common.nix
-              ./home/tibtiq@laptop.nix
+              # ./home/tibtiq@proxmox_lxc_fresh.nix
             ];
           };
         };
