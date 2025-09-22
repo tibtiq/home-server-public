@@ -2,6 +2,7 @@
 
 # The following command will download and immediately run the bash script.
 # curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_user.sh | bash
+# script expects to be run as root
 
 set -euo pipefail
 IFS=$'\n\t'
