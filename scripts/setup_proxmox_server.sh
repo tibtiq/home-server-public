@@ -6,5 +6,11 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_user.sh | bash -s -- "$@"
-curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/download_github_ssh_keys.sh | bash
+if [[ $# -eq 0 || -z "$1" ]]; then
+    echo "Usage: $0 <username>"
+    exit 1
+fi
+username="$1"
+
+curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_user.sh | bash -s -- "$username"
+su - ""$username" -c "curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/download_github_ssh_keys.sh | bash"
