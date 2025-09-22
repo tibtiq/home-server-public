@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The following command will download and immediately run the bash script.
-# bash <(wget -qO- https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_user.sh)
+# curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_user.sh | bash
 
 set -euo pipefail
 IFS=$'\n\t'
