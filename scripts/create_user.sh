@@ -6,7 +6,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if [[ -z "$1" ]]; then
+if [[ $# -eq 0 || -z "$1" ]]; then
     echo "Usage: $0 <username>"
     exit 1
 fi
