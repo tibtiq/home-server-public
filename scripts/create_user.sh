@@ -10,7 +10,6 @@ if [[ $# -eq 0 || -z "$1" ]]; then
     echo "Usage: $0 <username>"
     exit 1
 fi
-
 username="$1"
 
 # create the user with the default home directory location and bash shell.
