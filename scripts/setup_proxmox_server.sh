@@ -7,3 +7,4 @@ set -euo pipefail
 IFS=$'\n\t'
 
 curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_user.sh | bash -s -- "$@"
+curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/download_github_ssh_keys.sh | bash
