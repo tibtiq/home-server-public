@@ -20,15 +20,21 @@ if useradd -m -s /bin/bash "$username" 2>&1 | grep -q "already exists"; then
 fi
 
 # setup group that can sudo with no password
-groupadd sudo_no_password
+GROUP="sudo_no_password"
+if getent group "$GROUP" > /dev/null 2>&1; then
+    echo "Group '$GROUP' already exists."
+else
+    groupadd "$GROUP"
+    echo "Group '$GROUP' created."
 
-# update group to allow passwordless sudo
-LINE='%sudo_no_password ALL=(ALL) NOPASSWD: ALL'
-FILE='/etc/sudoers'
-if grep -Fxq "$LINE" "$FILE"; then
-    echo "Passwordless sudo setting for group sudo_no_password already exists in $FILE"
+    # update group to allow passwordless sudo
+    LINE='%sudo_no_password ALL=(ALL) NOPASSWD: ALL'
+    FILE='/etc/sudoers'
+    if grep -Fxq "$LINE" "$FILE"; then
+        echo "Passwordless sudo setting for group sudo_no_password already exists in $FILE"
+    fi
+    echo "$LINE" | EDITOR='tee -a' visudo
 fi
-echo "$LINE" | EDITOR='tee -a' visudo
 
 # add them to the group
 usermod -aG sudo_no_password "$username"
