@@ -10,7 +10,7 @@
   password = "somepass";
   ssh_keys = builtins.fetchurl {
     url = "https://github.com/tibtiq.keys";
-    sha256 = "01b5i1bvbpvlr8qzcqpb155qaiiij2xnwkwifrwbf3vki62i9npi";
+    sha256 = "1nha9g5s4zyfbwmza0n3kbsmnx38w0xzsrzyrq4bcywzf0hc42zx";
   };
 
   defaultLocale = "en_US.UTF-8";
