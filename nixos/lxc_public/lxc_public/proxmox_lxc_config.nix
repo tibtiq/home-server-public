@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  hostname = "nixos";
+  hostname = "storage";
   user = "tibtiq";
   password = "somepass";
   ssh_keys = builtins.fetchurl {
