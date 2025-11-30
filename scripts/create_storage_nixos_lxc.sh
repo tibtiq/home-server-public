@@ -7,7 +7,7 @@ TEMPLATE_FILE='nixos-system-x86_64-linux-283416299.tar.xz'
 # Name to assign to new NixOS container.
 CONTAINER_HOSTNAME="storage"
 # Which storage location to place the new NixOS container.
-CONTAINER_STORAGE='local'
+CONTAINER_STORAGE='local-zfs'
 # How much RAM to assign the new container.
 CONTAINER_RAM_IN_MB='8192'
 # How much disk space to assign the new container.
