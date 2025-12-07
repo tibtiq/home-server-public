@@ -8,7 +8,7 @@
   hostname = "nixos";
   user = "tibtiq";
   password = "somepass";
-  ssh_keys = builtins.fetchurl {
+  GITHUB_SSH_KEYS = builtins.fetchurl {
     url = "https://github.com/tibtiq.keys";
     sha256 = "1nha9g5s4zyfbwmza0n3kbsmnx38w0xzsrzyrq4bcywzf0hc42zx";
   };
@@ -31,7 +31,7 @@ in {
       isNormalUser = true;
       password = password;
       openssh.authorizedKeys.keyFiles = [
-        ssh_keys
+        GITHUB_SSH_KEYS
       ];
       extraGroups = ["wheel"];
     };
