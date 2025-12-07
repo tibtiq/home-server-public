@@ -35,6 +35,11 @@ in {
       ];
       extraGroups = ["wheel"];
     };
+    root = {
+      openssh.authorizedKeys.keyFiles = [
+        GITHUB_SSH_KEYS
+      ];
+    }
   };
 
   # Enable passwordless sudo.
