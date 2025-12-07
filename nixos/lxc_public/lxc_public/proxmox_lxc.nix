@@ -17,8 +17,6 @@ in {
     # Include the default lxc/lxd configuration.
     "${modulesPath}/virtualisation/lxc-container.nix"
   ];
-
-  boot.isContainer = true;
   networking.hostName = hostname;
 
   environment.systemPackages = with pkgs; [
