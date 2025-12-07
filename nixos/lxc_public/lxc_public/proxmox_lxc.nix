@@ -12,8 +12,6 @@
     url = "https://github.com/tibtiq.keys";
     sha256 = "01b5i1bvbpvlr8qzcqpb155qaiiij2xnwkwifrwbf3vki62i9npi";
   };
-
-  defaultLocale = "en_US.UTF-8";
 in {
   imports = [
     # Include the default lxc/lxd configuration.
