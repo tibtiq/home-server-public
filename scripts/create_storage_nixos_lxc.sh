@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# The following command will download and immediately run the bash script.
+# curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_storage_nixos_lxc.sh | bash
 
 # Where the template file is located
 TEMPLATE_STORAGE='local'
