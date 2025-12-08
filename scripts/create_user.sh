@@ -1,13 +1,16 @@
 #!/bin/bash
 
 # The following command will download and immediately run the bash script.
-# bash <(wget -qO- https://raw.githubusercontent.com/tibtiq/home-server-public/refs/main/publish-files-from-private/scripts/create_user.sh)
+# curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_user.sh | bash -s -- USERNAME
+# script expects to be run as root
 
-if [[ -z "$1" ]]; then
+set -euo pipefail
+IFS=$'\n\t'
+
+if [[ $# -eq 0 || -z "$1" ]]; then
     echo "Usage: $0 <username>"
     exit 1
 fi
-
 username="$1"
 
 # create the user with the default home directory location and bash shell.
@@ -17,15 +20,21 @@ if useradd -m -s /bin/bash "$username" 2>&1 | grep -q "already exists"; then
 fi
 
 # setup group that can sudo with no password
-groupadd sudo_no_password
+GROUP="sudo_no_password"
+if getent group "$GROUP" > /dev/null 2>&1; then
+    echo "Group '$GROUP' already exists."
+else
+    groupadd "$GROUP"
+    echo "Group '$GROUP' created."
 
-# update group to allow passwordless sudo
-LINE='%sudo_no_password ALL=(ALL) NOPASSWD: ALL'
-FILE='/etc/sudoers'
-if sudo grep -Fxq "$LINE" "$FILE"; then
-    echo "Passwordless sudo setting for group sudo_no_password already exists in $FILE"
+    # update group to allow passwordless sudo
+    LINE='%sudo_no_password ALL=(ALL) NOPASSWD: ALL'
+    FILE='/etc/sudoers'
+    if grep -Fxq "$LINE" "$FILE"; then
+        echo "Passwordless sudo setting for group sudo_no_password already exists in $FILE"
+    fi
+    echo "$LINE" | EDITOR='tee -a' visudo
 fi
-echo "$LINE" | sudo EDITOR='tee -a' visudo
 
 # add them to the group
 usermod -aG sudo_no_password "$username"

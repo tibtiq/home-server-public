@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  hostname = "nixos";
+  hostname = "storage";
   user = "tibtiq";
   password = "somepass";
   GITHUB_SSH_KEYS = builtins.fetchurl {
