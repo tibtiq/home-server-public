@@ -16,6 +16,9 @@ CONTAINER_RAM_IN_MB='8192'
 # How much disk space to assign the new container.
 CONTAINER_DISK_SIZE_IN_GB='64'
 
+# download ssh keys from github
+wget https://github.com/tibtiq.keys -O ~/.ssh/github_keys.pub
+
 pct create "$(pvesh get /cluster/nextid)" \
   --arch amd64 \
   "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE_FILE}" \
@@ -30,4 +33,5 @@ pct create "$(pvesh get /cluster/nextid)" \
   --features nesting=1 \
   --cmode console \
   --onboot 1 \
+  --ssh-public-keys ~/.ssh/github_keys.pub \
   --start 1
