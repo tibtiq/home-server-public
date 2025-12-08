@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # The following command will download and immediately run the bash script.
-# curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_storage_nixos_lxc.sh | bash
+# curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_nixos_lxc.sh | bash
 
 # Where the template file is located
 TEMPLATE_STORAGE='local'
 # Name of the template file downloaded from Hydra.
 TEMPLATE_FILE='nixos-system-x86_64-linux-283416299.tar.xz'
 # Name to assign to new NixOS container.
-CONTAINER_HOSTNAME="storage"
+CONTAINER_HOSTNAME="nixos"
 # Which storage location to place the new NixOS container.
 CONTAINER_STORAGE='local-zfs'
 # How much RAM to assign the new container.
