@@ -1,17 +1,23 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# The following command will download and immediately run the bash script.
+# curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_nixos_lxc.sh | bash
 
 # Where the template file is located
 TEMPLATE_STORAGE='local'
 # Name of the template file downloaded from Hydra.
 TEMPLATE_FILE='nixos-system-x86_64-linux-283416299.tar.xz'
 # Name to assign to new NixOS container.
-CONTAINER_HOSTNAME="storage"
+CONTAINER_HOSTNAME="nixos"
 # Which storage location to place the new NixOS container.
 CONTAINER_STORAGE='local-zfs'
 # How much RAM to assign the new container.
 CONTAINER_RAM_IN_MB='8192'
 # How much disk space to assign the new container.
 CONTAINER_DISK_SIZE_IN_GB='64'
+
+# download ssh keys from github
+wget https://github.com/tibtiq.keys -O ~/.ssh/github_keys.pub
 
 pct create "$(pvesh get /cluster/nextid)" \
   --arch amd64 \
@@ -27,4 +33,5 @@ pct create "$(pvesh get /cluster/nextid)" \
   --features nesting=1 \
   --cmode console \
   --onboot 1 \
+  --ssh-public-keys ~/.ssh/github_keys.pub \
   --start 1
