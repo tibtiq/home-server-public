@@ -7,7 +7,6 @@
 }: let
   hostname = "storage";
   user = "tibtiq";
-  password = "somepass";
   GITHUB_SSH_KEYS = builtins.fetchurl {
     url = "https://github.com/tibtiq.keys";
     sha256 = "1nha9g5s4zyfbwmza0n3kbsmnx38w0xzsrzyrq4bcywzf0hc42zx";
@@ -29,7 +28,6 @@ in {
     mutableUsers = false;
     users."${user}" = {
       isNormalUser = true;
-      password = password;
       openssh.authorizedKeys.keyFiles = [
         GITHUB_SSH_KEYS
       ];
