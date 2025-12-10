@@ -33,6 +33,13 @@ in {
       ];
       extraGroups = ["wheel"];
     };
+    users.root = {
+      isSystemUser = true;
+      PermitRootLogin = "prohibit-password";
+      openssh.authorizedKeys.keyFiles = [
+        GITHUB_SSH_KEYS
+      ];
+    };
   };
 
   # Enable passwordless sudo.
