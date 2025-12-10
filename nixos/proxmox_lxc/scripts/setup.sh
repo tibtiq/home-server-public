@@ -12,4 +12,4 @@ curl \
   https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/nixos/proxmox_lxc/proxmox_lxc.nix \
   >${NIX_CONFIG_PATH}
 
-nix-channel --update --sudo && nixos-rebuild switch --upgrade --option extra-experimental-features "nix-command flakes" --sudo
+sudo nix-channel --update && sudo nixos-rebuild switch --upgrade --option extra-experimental-features "nix-command flakes"
