@@ -66,7 +66,6 @@ in {
     enable = true;
     settings = {
       PermitRootLogin = "prohibit-password";
-      PasswordAuthentication = false;
     };
   };
 
