@@ -20,7 +20,7 @@ CONTAINER_DISK_SIZE_IN_GB='64'
 wget https://github.com/tibtiq.keys -O ~/.ssh/github_keys.pub
 
 # download NixOS image
-curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/13-setup-single-script-for-setting-up-nixos-lxc/scripts/download_nixos_image.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_nixos_lxc.sh | bash
 
 # create LXC
 pct create "$(pvesh get /cluster/nextid)" \
