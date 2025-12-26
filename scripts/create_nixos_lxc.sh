@@ -19,6 +19,7 @@ CONTAINER_DISK_SIZE_IN_GB='64'
 # download ssh keys from github
 wget https://github.com/tibtiq.keys -O ~/.ssh/github_keys.pub
 
+# create LXC
 pct create "$(pvesh get /cluster/nextid)" \
   --arch amd64 \
   "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE_FILE}" \
