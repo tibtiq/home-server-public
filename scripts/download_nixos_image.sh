@@ -25,3 +25,4 @@ mkdir -p "$IMAGE_STORAGE_PATH"
 curl -fL "$URL" -o "$TEMPLATE_PATH"
 
 chmod 0644 "$TEMPLATE_PATH"
+echo "Successfully download NixOS LXC image"
