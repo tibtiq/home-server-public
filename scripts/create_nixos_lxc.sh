@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
 
 # The following command will download and immediately run the bash script.
 # curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/create_nixos_lxc.sh | bash
@@ -19,6 +21,10 @@ CONTAINER_DISK_SIZE_IN_GB='64'
 # download ssh keys from github
 wget https://github.com/tibtiq.keys -O ~/.ssh/github_keys.pub
 
+# download NixOS image
+curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/download_nixos_image.sh | bash
+
+# create LXC
 pct create "$(pvesh get /cluster/nextid)" \
   --arch amd64 \
   "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE_FILE}" \
