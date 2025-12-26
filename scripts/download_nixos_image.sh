@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 # The following command will download and immediately run the bash script.
-# curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/download_nixos_iamge.sh | bash
+# curl -fsSL https://raw.githubusercontent.com/tibtiq/home-server-public/refs/heads/main/scripts/download_nixos_image.sh | bash
 
 IMAGE_STORAGE_PATH="/var/lib/vz/template/cache"
 URL="https://hydra.nixos.org/build/283416299/download/1/nixos-system-x86_64-linux.tar.xz"
