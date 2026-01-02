@@ -29,7 +29,7 @@ pct create "$(pvesh get /cluster/nextid)" \
   --arch amd64 \
   "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE_FILE}" \
   --ostype unmanaged \
-  --description "nixos based storage" \
+  --description "" \
   --hostname "${CONTAINER_HOSTNAME}" \
   --net0 name=eth0,bridge=vmbr0,ip=dhcp,firewall=1 \
   --storage "${CONTAINER_STORAGE}" \
