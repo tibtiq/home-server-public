@@ -9,7 +9,7 @@
   user = "tibtiq";
   GITHUB_SSH_KEYS = builtins.fetchurl {
     url = "https://github.com/tibtiq.keys";
-    sha256 = "1nha9g5s4zyfbwmza0n3kbsmnx38w0xzsrzyrq4bcywzf0hc42zx";
+    sha256 = "1dsyidxpyxl15gj8fswayh920nl7hsxd8h91bch7s96djijj048k";
   };
 in {
   imports = [
