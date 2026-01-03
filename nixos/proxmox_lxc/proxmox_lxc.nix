@@ -4,14 +4,16 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   hostname = "nixos";
   user = "tibtiq";
   GITHUB_SSH_KEYS = builtins.fetchurl {
     url = "https://github.com/tibtiq.keys";
     sha256 = "1dsyidxpyxl15gj8fswayh920nl7hsxd8h91bch7s96djijj048k";
   };
-in {
+in
+{
   imports = [
     # Include the default lxc/lxd configuration.
     "${modulesPath}/virtualisation/lxc-container.nix"
@@ -19,9 +21,9 @@ in {
   networking.hostName = hostname;
 
   environment.systemPackages = with pkgs; [
-    vim   # text editor
-    git   # source version control
-    tmux  # tui for git
+    vim # text editor
+    git # source version control
+    tmux # tui for git
   ];
 
   users = {
@@ -31,7 +33,7 @@ in {
       openssh.authorizedKeys.keyFiles = [
         GITHUB_SSH_KEYS
       ];
-      extraGroups = ["wheel"];
+      extraGroups = [ "wheel" ];
     };
     users.root = {
       isSystemUser = true;
@@ -44,11 +46,11 @@ in {
   # Enable passwordless sudo.
   security.sudo.extraRules = [
     {
-      users = [user];
+      users = [ user ];
       commands = [
         {
           command = "ALL";
-          options = ["NOPASSWD"];
+          options = [ "NOPASSWD" ];
         }
       ];
     }
@@ -69,7 +71,10 @@ in {
     };
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   system.stateVersion = "24.05";
 }
